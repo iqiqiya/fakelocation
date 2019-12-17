@@ -31,32 +31,33 @@ public class MainActivity extends AppCompatActivity {
         return Build.MODEL;//android.os.Build
     }
 
+    //获取系统信息
     private void getInformation() {
         StringBuffer devicesInfo = new StringBuffer();
-        devicesInfo.append("ID: ").append(Build.ID).append("\n");
-        devicesInfo.append("DISPLAY: ").append(Build.DISPLAY).append("\n");
-        devicesInfo.append("PRODUCT: ").append(Build.PRODUCT).append("\n");
-        devicesInfo.append("DEVICE: ").append(Build.DEVICE).append("\n");
-        devicesInfo.append("BOARD: ").append(Build.BOARD).append("\n");
-        devicesInfo.append("CPU_ABI: ").append(Build.CPU_ABI).append("\n");//废
-        devicesInfo.append("CPU_ABI2: ").append(Build.CPU_ABI2).append("\n");//废
-        devicesInfo.append("MANUFACTURER: ").append(Build.MANUFACTURER).append("\n");
-        devicesInfo.append("BRAND: ").append(Build.BRAND).append("\n");
-        devicesInfo.append("MODEL: ").append(Build.MODEL).append("\n");
-        devicesInfo.append("BOOTLOADER: ").append(Build.BOOTLOADER).append("\n");
-        devicesInfo.append("RADIO: ").append(Build.RADIO).append("\n");//废
-        devicesInfo.append("HARDWARE: ").append(Build.HARDWARE).append("\n");
-        devicesInfo.append("SERIAL: ").append(Build.SERIAL).append("\n");//
-        devicesInfo.append("INCREMENTAL: ").append(Build.VERSION.INCREMENTAL).append("\n");
-        devicesInfo.append("RELEASE: ").append(Build.VERSION.RELEASE).append("\n");
+        devicesInfo.append("ID: ").append(Build.ID).append("\n");//设备版本号
+        devicesInfo.append("DISPLAY: ").append(Build.DISPLAY).append("\n");//获取设备显示的版本包（在系统设置中显示为版本号）和ID一样
+        devicesInfo.append("PRODUCT: ").append(Build.PRODUCT).append("\n");//整个产品的名称
+        devicesInfo.append("DEVICE: ").append(Build.DEVICE).append("\n");//获取设备驱动名称
+        devicesInfo.append("BOARD: ").append(Build.BOARD).append("\n");//获取设备基板名称
+        devicesInfo.append("CPU_ABI: ").append(Build.CPU_ABI).append("\n");//废 获取设备指令集名称（CPU的类型）
+        devicesInfo.append("CPU_ABI2: ").append(Build.CPU_ABI2).append("\n");//废 获取第二个指令集名称
+        devicesInfo.append("MANUFACTURER: ").append(Build.MANUFACTURER).append("\n");//获取设备制造商
+        devicesInfo.append("BRAND: ").append(Build.BRAND).append("\n");//获取设备品牌
+        devicesInfo.append("MODEL: ").append(Build.MODEL).append("\n");//获取手机的型号 设备名称
+        devicesInfo.append("BOOTLOADER: ").append(Build.BOOTLOADER).append("\n");//获取设备引导程序版本号
+        devicesInfo.append("RADIO: ").append(Build.RADIO).append("\n");//废 无线电固件版本号，通常是不可用的 显示unknown
+        devicesInfo.append("HARDWARE: ").append(Build.HARDWARE).append("\n");//设备硬件名称,一般和基板名称一样（BOARD）
+        devicesInfo.append("SERIAL: ").append(Build.SERIAL).append("\n");//获取设备序列号（SN）
+        devicesInfo.append("INCREMENTAL: ").append(Build.VERSION.INCREMENTAL).append("\n");//获取系统的升级字 主要用于系统OTA精确版本比对
+        devicesInfo.append("RELEASE: ").append(Build.VERSION.RELEASE).append("\n");//获取系统版本字符串
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             devicesInfo.append("BASE_OS: ").append(Build.VERSION.BASE_OS).append("\n");
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             devicesInfo.append("SECURITY_PATCH: ").append(Build.VERSION.SECURITY_PATCH).append("\n");
         }
-        devicesInfo.append("SDK: ").append(Build.VERSION.SDK).append("\n");//
-        devicesInfo.append("SDK_INT: ").append(Build.VERSION.SDK_INT).append("\n");
+        devicesInfo.append("SDK: ").append(Build.VERSION.SDK).append("\n");//系统的API级别 一般使用下面大的SDK_INT 来查看
+        devicesInfo.append("SDK_INT: ").append(Build.VERSION.SDK_INT).append("\n");//系统的API级别 数字表示
         Log.e(TAG, "getInformation: " + devicesInfo.toString());
     }
 }
