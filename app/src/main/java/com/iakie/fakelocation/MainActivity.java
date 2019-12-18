@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.lang.reflect.Method;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "iAkie";
@@ -27,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         tv.setText("齐齐真好看！");
     }*/
 
-    public static String getSystemModel() {
-        return Build.MODEL;//android.os.Build
-    }
 
     //获取系统信息
     private void getInformation() {
@@ -50,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         devicesInfo.append("SERIAL: ").append(Build.SERIAL).append("\n");//获取设备序列号（SN）
         devicesInfo.append("INCREMENTAL: ").append(Build.VERSION.INCREMENTAL).append("\n");//获取系统的升级字 主要用于系统OTA精确版本比对
         devicesInfo.append("RELEASE: ").append(Build.VERSION.RELEASE).append("\n");//获取系统版本字符串
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//判断是否是ANDROID6.0及以上
             devicesInfo.append("BASE_OS: ").append(Build.VERSION.BASE_OS).append("\n");
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            devicesInfo.append("SECURITY_PATCH: ").append(Build.VERSION.SECURITY_PATCH).append("\n");
+            devicesInfo.append("SECURITY_PATCH: ").append(Build.VERSION.SECURITY_PATCH).append("\n");//查看设备的安全补丁程序级别
         }
         devicesInfo.append("SDK: ").append(Build.VERSION.SDK).append("\n");//系统的API级别 一般使用下面大的SDK_INT 来查看
         devicesInfo.append("SDK_INT: ").append(Build.VERSION.SDK_INT).append("\n");//系统的API级别 数字表示

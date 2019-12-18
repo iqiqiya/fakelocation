@@ -1,5 +1,6 @@
 package com.iakie.fakelocation;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -12,13 +13,21 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
+
 public class HookTest implements IXposedHookLoadPackage {
 
     public static final String TAG = "Test iakie";
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
-        if (lpparam.packageName.equals("com.iakie.fakelocation")) {
+        /**if (lpparam.packageName.equals("com.iakie.fakelocation")) {
+
+            XposedHelpers.setStaticObjectField(Build.class,"MANUFACTURER","OPPO");
+            XposedHelpers.setStaticObjectField(Build.class,"BRAND","OPPO");
+            XposedHelpers.setStaticObjectField(Build.class,"PRODUCT","R11 Plus");
+            XposedHelpers.setStaticObjectField(Build.class,"DEVICE","R11 Plus");
+            XposedHelpers.setStaticObjectField(Build.class,"MODEL","OPPO R11 Plus");
+
             XposedHelpers.findAndHookMethod("com.iakie.fakelocation.MainActivity",
                     lpparam.classLoader, "onCreate", Bundle.class, new XC_MethodHook() {
                         @Override
@@ -39,6 +48,17 @@ public class HookTest implements IXposedHookLoadPackage {
                             tv.setText("齐齐喜欢秋绘");
                         }
                     });
+
+                            //super.afterHookedMethod(param);
+
+
+        }**/
+        if (lpparam.packageName.equals("com.iakie.fakelocation")|lpparam.packageName.equals("com.tencent.mobileqq")|lpparam.packageName.equals("com.iakie.getinformation")) {
+            XposedHelpers.setStaticObjectField(Build.class,"MANUFACTURER","OPPO");
+            XposedHelpers.setStaticObjectField(Build.class,"BRAND","OPPO");
+            XposedHelpers.setStaticObjectField(Build.class,"PRODUCT","R11 Plus");
+            XposedHelpers.setStaticObjectField(Build.class,"DEVICE","R11 Plus");
+            XposedHelpers.setStaticObjectField(Build.class,"MODEL","OPPO R11 Plus");
         }
     }
 }
